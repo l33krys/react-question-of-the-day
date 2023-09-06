@@ -31,9 +31,7 @@ const MySelect = ({ label, ...props }) => {
   );
 };
 
-const AddQuestionForm = () => {
-  const [addedQuestion, setAddedQuestion] = useState(null);
-
+const AddQuestionForm = ({ handleNewQuestion }) => {
   const handleSubmit = (values) => {
     const newQuestion = {
       text: values.newQuestion,
@@ -47,7 +45,7 @@ const AddQuestionForm = () => {
     })
       .then((r) => r.json())
       .then((questions) => {
-        setAddedQuestion(newQuestion);
+        handleNewQuestion(questions);
       });
   };
 
@@ -96,19 +94,6 @@ const AddQuestionForm = () => {
           </Button>
         </Form>
       </Formik>
-
-      {/* Display submitted question */}
-      {addedQuestion && (
-        <div>
-          <Typography variant="h6">Submitted Question:</Typography>
-          <p>
-            <strong>Question:</strong> {addedQuestion.text}
-          </p>
-          <p>
-            <strong>Category:</strong> {addedQuestion.category}
-          </p>
-        </div>
-      )}
     </>
   );
 };
