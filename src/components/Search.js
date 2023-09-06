@@ -12,6 +12,7 @@ function Search( { search, setSearch, setSelectedCategory, setShowNewAndUsed }) 
                     <strong>Filter by Category:</strong>
                     <select name="category" id="filter-category" onChange={(e) => setSelectedCategory(e.target.value)}>
                         <option value="All">All</option>
+                        <option value="family-and-friends">Family & Friends</option>
                         <option value="recreation">Recreation</option>
                         <option value="work">Work</option>
                         <option value="miscellaneous">Miscellaneous</option>
