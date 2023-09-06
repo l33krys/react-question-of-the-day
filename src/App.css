@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+#search-bar {
+  padding: 1em;
+  position: relative;
+  height: 15px;
+  width: 350px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+
+}
+input#search-bar {
+  font-size: 14px;
+  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 40px;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+#filter-category {
+  margin: 25px;
+}
