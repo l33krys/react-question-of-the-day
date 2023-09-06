@@ -39,7 +39,7 @@
 
 #search-bar {
   padding: 1em;
-  position: relative;
+  position: static;
   height: 15px;
   width: 350px;
   border-radius: 8px;
@@ -58,4 +58,19 @@ input#search-bar {
 
 #filter-category {
   margin: 25px;
+}
+
+#nav-bar {
+  text-align: left;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+#nav-bar a {
+  margin: 20px;
+  padding: 20px;
 }

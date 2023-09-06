@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search( { search, setSearch, selectedCategory, setSelectedCategory, showNewAndUsed, setShowNewAndUsed }) {
+function Search( { search, setSearch, setSelectedCategory, setShowNewAndUsed }) {
 
     return (
         <div>

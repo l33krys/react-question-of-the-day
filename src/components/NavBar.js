@@ -2,8 +2,12 @@ import React from "react";
 
 function NavBar() {
   return (
-    <div>
-      <h2>Name of website, logo, navigation</h2>
+    <div id="nav-bar">
+      <strong>
+        <a>Home</a>
+        <a>All Questions</a>
+        <a>Add New</a>
+      </strong>
     </div>
   );
 }
