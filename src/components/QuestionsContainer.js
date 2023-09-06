@@ -1,5 +1,7 @@
+import Typography from "@mui/material/Typography";
 import React, { useState, useEffect } from "react";
 import QuestionsList from "./QuestionsList";
+
 
 function QuestionsContainer() {
   const [questions, setQuestions] = useState([]);
@@ -12,7 +14,7 @@ function QuestionsContainer() {
 
   return (
     <div>
-      <h2>Today's Question</h2>
+      <Typography variant="h2">Today's Question</Typography>
       <QuestionsList questions={questions} />
     </div>
   );
