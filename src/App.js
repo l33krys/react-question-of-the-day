@@ -6,10 +6,11 @@ import Footer from "./components/Footer";
 import AddQuestionForm from "./components/AddQuestionForm";
 
 function App() {
+
   return (
     <div className="App">
       <NavBar />
-      <QuestionsContainer />
+      <QuestionsContainer  />
       <AddQuestionForm />
       <Footer />
     </div>
