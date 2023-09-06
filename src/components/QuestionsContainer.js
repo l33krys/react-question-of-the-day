@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Typography from "@mui/material/Typography";
+import QuestionsList from "./QuestionsList";
 import Search from "./Search";
 
 function QuestionsContainer() {
@@ -36,20 +38,15 @@ function QuestionsContainer() {
 
   return (
     <div>
-      <Search search={search} setSearch={setSearch} setSelectedCategory={setSelectedCategory} setShowNewAndUsed={setShowNewAndUsed} />
-      <h2>Today's Question</h2>
+      <Typography variant="h2">Today's Question</Typography>
+      <Search search={search} setSearch={setSearch} setSelectedCategory={setSelectedCategory} setShowNewAndUsed={setShowNewAndUsed} />  
       <h1>{randomQuestion}</h1>
       <label>
           <strong>Only New Questions:</strong>
           <input type="checkbox" id="new-or-repeat" name="completed" onClick={(e) => setShowNewAndUsed(e.target.checked)}/>
       </label>
       <button onClick={getRandomQuestion}>Next Question</button>
-      <br />
-      {/* add components - QuestionList, Sort, Search, CategoryFilter*/}
-      {/* Update rendered questions to use "searchedQuestions" */}
-      {searchedQuestions.map((question) => (
-        question.text)
-      )}
+      <QuestionsList questions={searchedQuestions} />  
     </div>
   );
 }
