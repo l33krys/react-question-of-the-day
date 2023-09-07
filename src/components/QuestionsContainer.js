@@ -36,6 +36,26 @@ function QuestionsContainer() {
     setRandomQuestion(questions[randomIndex].text)
   }
 
+  function deletedQuestion(deletedItem) {
+
+    fetch(`http://localhost:3000/questions/${deletedItem.id}`, {
+      method: "DELETE"})
+    .then(r => r.json())
+    .then(() => {
+      const updatedQuestions = questions.filter((question) =>
+      question.id !== deletedItem.id
+      )
+
+      setQuestions(updatedQuestions)
+    })
+}
+
+  function updateLikes(updatedItem) {
+    const updatedQuestions = questions.map((question) =>
+      question.id === updatedItem.id ? updatedItem : question)
+    setQuestions(updatedQuestions)  
+  }
+
   return (
     <div>
       <Typography variant="h2">Today's Question</Typography>
@@ -46,7 +66,7 @@ function QuestionsContainer() {
           <input type="checkbox" id="new-or-repeat" name="completed" onClick={(e) => setShowNewAndUsed(e.target.checked)}/>
       </label>
       <button onClick={getRandomQuestion}>Next Question</button>
-      <QuestionsList questions={searchedQuestions} />  
+      <QuestionsList questions={searchedQuestions} deletedQuestion={deletedQuestion} updateLikes={updateLikes} />  
     </div>
   );
 }

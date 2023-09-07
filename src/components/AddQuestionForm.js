@@ -38,6 +38,8 @@ const AddQuestionForm = () => {
     const newQuestion = {
       text: values.newQuestion,
       category: values.category,
+      completed: false,
+      likes: 0
     };
 
     fetch("http://localhost:3000/questions", {
@@ -65,7 +67,7 @@ const AddQuestionForm = () => {
             .required("Required"),
           category: Yup.string()
             .oneOf(
-              ["recreation", "family & friends", "work", "miscellaneous"],
+              ["Recreation", "Family & Friends", "Work", "Miscellaneous"],
               "Invalid Job Type"
             )
             .required("Required"),
@@ -85,10 +87,10 @@ const AddQuestionForm = () => {
 
           <MySelect label="Category" name="category">
             <option value="">Select a Category</option>
-            <option value="recreation">Recreation</option>
-            <option value="family & friends">Family & Friends</option>
-            <option value="work">Work</option>
-            <option value="miscellaneous">Miscellaneous</option>
+            <option value="Recreation">Recreation</option>
+            <option value="Family & Friends">Family & Friends</option>
+            <option value="Work">Work</option>
+            <option value="Miscellaneous">Miscellaneous</option>
           </MySelect>
 
           <Button type="submit" color="secondary" variant="outlined">
