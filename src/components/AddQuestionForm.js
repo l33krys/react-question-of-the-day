@@ -91,9 +91,10 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                 )
                 .required("Required"),
             })}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, resetForm }) => {
               handleSubmit(values);
               setSubmitting(false);
+              resetForm();
             }}
           >
             <Form>
@@ -105,6 +106,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                     type="text"
                     placeholder="Type your question here..."
                     className="question-input"
+                    style={{ marginTop: "10px" }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -123,6 +125,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                 variant="contained"
                 color="primary"
                 fullWidth
+                style={{ marginTop: "20px" }}
               >
                 Submit
               </Button>
