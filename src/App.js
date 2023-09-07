@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -9,12 +9,21 @@ import Dashboard from "./pages/Dashboard";
 import Questions from "./pages/Questions";
 
 function App() {
+
+  const [questions, setQuestions] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/questions")
+      .then((r) => r.json())
+      .then((data) => setQuestions(data));
+  }, []);
+
   return (
     <Router>
       <NavBar />
       <Switch>
         <Route path="/" exact>
-          <Home />
+          <Home questions={questions} setQuestions={setQuestions} />
         </Route>
         <Route path="/add-question">
           <AddQuestion />
@@ -23,7 +32,7 @@ function App() {
           <Dashboard />
         </Route>
         <Route path="/questions">
-          <Questions />
+          <Questions questions={questions} setQuestions={setQuestions} />
         </Route>
       </Switch>
       <Footer />

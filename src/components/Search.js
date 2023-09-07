@@ -3,7 +3,7 @@ import React from "react";
 function Search( { search, setSearch, setSelectedCategory, setShowNewAndUsed }) {
 
     return (
-        <div>
+        <div id="search-container">
             <div>
                 <input type="text" id="search-bar" placeholder="Search for questions" className="prompt" value={search} onChange={(e) => setSearch(e.target.value)}/>
             </div>
@@ -18,10 +18,8 @@ function Search( { search, setSearch, setSelectedCategory, setShowNewAndUsed }) 
                         <option value="miscellaneous">Miscellaneous</option>
                     </select>
                 </label>
-            </div>
-            <div>
                 <label>
-                    <strong>Exclude Used Questions:</strong>
+                    <strong>Exclude Completed Questions:</strong>
                     <input type="checkbox" id="new-or-repeat" name="completed" onClick={(e) => setShowNewAndUsed(e.target.checked)}/>
                 </label>
             </div>

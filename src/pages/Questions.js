@@ -1,13 +1,13 @@
 import React from "react";
 import QuestionsContainer from "../components/QuestionsContainer";
 
+
 //QuestionsContainer.js should really live in pages (presentation)
 
-const Questions = () => {
+const Questions = ({ questions, setQuestions}) => {
   return (
     <div>
-      <h1>All Questions</h1>
-      <QuestionsContainer></QuestionsContainer>
+      <QuestionsContainer questions={questions} setQuestions={setQuestions}></QuestionsContainer>
     </div>
   );
 };
