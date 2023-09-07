@@ -5,7 +5,8 @@ const NavBar = () => {
   return (
     <div>
       <nav>
-        <h1>Logo</h1>
+        <h1>Question Query ❓</h1>
+        <p>Your daily source for your question of the day.</p>
         <ul>
           <li>
             <NavLink to="/" exact activeClassName="active-link">
