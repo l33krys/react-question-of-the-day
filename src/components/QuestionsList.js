@@ -1,10 +1,15 @@
 import React from "react";
 import QuestionCard from "./QuestionCard";
+import Typography from "@mui/material/Typography";
+
 
 function QuestionsList({ questions, deletedQuestion, updateQuestionInfo }) {
   return (
     <div>
       <table id="question-table">
+        <caption>
+          <Typography variant="h4">All Questions</Typography>
+        </caption>
         <tbody>
           <tr>
             <th>

@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 
-function Randomizer() {
+
+function Randomizer({ questions }) {
+
   const [randomQuestion, setRandomQuestion] = useState("");
 
-  //Hard coded. Remove in production.
-  const questions = [
-    "What is your favorite color?",
-    "What is your favorite movie?",
-    "What is your favorite food?",
-  ];
-
-  //Slight modification of Krystle's code
   function getRandomQuestion() {
     const numberOfQuestions = questions.length;
     const randomIndex = Math.floor(Math.random() * numberOfQuestions);
-    setRandomQuestion(questions[randomIndex]);
+    setRandomQuestion(questions[randomIndex].text);
   }
 
   return (
-    <div>
-      <h2>Random Question</h2>
-      <button onClick={getRandomQuestion}>Get Random Question</button>
-      <p>{randomQuestion}</p>
+    <div id="random-area" className="shaped-background">
+      <h2>Today's Question:</h2>
+      <p className="random-question">{randomQuestion}</p>
+      <Button
+        onClick={getRandomQuestion}
+        type="submit"
+        variant="contained"
+        color="primary"
+      >
+        Get Random Question
+      </Button>
     </div>
   );
 }

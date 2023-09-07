@@ -2,9 +2,11 @@ import React from "react";
 import Randomizer from "../components/Randomizer";
 import Dashboard from "../components/Dashboard";
 
-function Home() {
+function Home({ questions }) {
   return (
     <div>
+      <h1>Welcome to the Home Page</h1>
+      <Randomizer questions={questions} ></Randomizer>
       <h1>Welcome to Question Query ❓</h1>
       <p>
         Dive into a world of curiosity, fun, and learning with Question Query -
@@ -37,7 +39,6 @@ function Home() {
         Join us in fostering a community of curiosity and discovery, one
         question at a time.
       </p>
-      <Randomizer></Randomizer>
       <Dashboard></Dashboard>
     </div>
   );
