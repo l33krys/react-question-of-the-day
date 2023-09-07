@@ -23,21 +23,13 @@ function App() {
           <Home />
         </Route>
         <Route path="/add-question">
-          <AddQuestion
-            questions={questions}
-            setQuestions={setQuestions}
-            handleNewQuestion={handleNewQuestion}
-          />
+          <AddQuestion handleNewQuestion={handleNewQuestion} />
         </Route>
         <Route path="/dashboard">
           <Dashboard />
         </Route>
         <Route path="/questions">
-          <Questions
-            questions={questions}
-            setQuestions={setQuestions}
-            handleNewQuestion={handleNewQuestion}
-          />
+          <Questions questions={questions} setQuestions={setQuestions} />
         </Route>
       </Switch>
       <Footer />
