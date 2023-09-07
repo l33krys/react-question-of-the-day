@@ -1,19 +1,33 @@
 import "./App.css";
 import React from "react";
-import QuestionsContainer from "./components/QuestionsContainer";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import AddQuestionForm from "./components/AddQuestionForm";
+import Home from "./pages/Home";
+import AddQuestion from "./pages/AddQuestion";
+import Dashboard from "./pages/Dashboard";
+import Questions from "./pages/Questions";
 
 function App() {
-
   return (
-    <div className="App">
+    <Router>
       <NavBar />
-      <QuestionsContainer  />
-      <AddQuestionForm />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/add-question">
+          <AddQuestion />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/questions">
+          <Questions />
+        </Route>
+      </Switch>
       <Footer />
-    </div>
+    </Router>
   );
 }
 
