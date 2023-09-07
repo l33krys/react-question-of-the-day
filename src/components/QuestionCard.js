@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-function QuestionCard({ question, deletedQuestion, updateLikes }) {
+function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
 
-  const [showUpdateArea, setShowUpdateArea] = useState(false)
   const [likes, setLikes] = useState(question.likes)
+  const [isCompleted, setIsCompleted] = useState(question.completed)
 
   function handleLikes(e) {
     fetch(`http://localhost:3000/questions/${question.id}`, {
@@ -12,7 +12,7 @@ function QuestionCard({ question, deletedQuestion, updateLikes }) {
       body: JSON.stringify({...question, likes: question.likes +=1})
     })
     .then(r => r.json())
-    .then(updatedItem => updateLikes(updatedItem))
+    .then(updatedItem => updateQuestionInfo(updatedItem))
   }
 
   function handleDelete(e) {

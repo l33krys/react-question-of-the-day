@@ -1,7 +1,7 @@
 import React from "react";
 import QuestionCard from "./QuestionCard";
 
-function QuestionsList({ questions, deletedQuestion, updateLikes }) {
+function QuestionsList({ questions, deletedQuestion, updateQuestionInfo }) {
   return (
     <div>
       <table id="question-table">
@@ -24,7 +24,7 @@ function QuestionsList({ questions, deletedQuestion, updateLikes }) {
             </th>
           </tr>
           {questions.map((question) => (
-        <QuestionCard key={question.id} question={question} deletedQuestion={deletedQuestion} updateLikes={updateLikes} />
+        <QuestionCard key={question.id} question={question} deletedQuestion={deletedQuestion} updateQuestionInfo={updateQuestionInfo} />
       ))}
         </tbody>
       </table>
