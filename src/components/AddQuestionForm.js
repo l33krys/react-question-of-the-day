@@ -75,7 +75,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       <Grid item xs={12} sm={8} md={6}>
         <Box p={3}>
           <Typography variant="h2" align="center">
-            Add new Question
+            Add New Question
           </Typography>
           <Formik
             initialValues={{
