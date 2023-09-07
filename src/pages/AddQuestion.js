@@ -1,11 +1,10 @@
 import React from "react";
 import AddQuestionForm from "../components/AddQuestionForm";
 
-function AddQuestion() {
+function AddQuestion({ handleNewQuestion }) {
   return (
     <div>
-      <h1>Add a New Question</h1>
-      <AddQuestionForm></AddQuestionForm>
+      <AddQuestionForm handleNewQuestion={handleNewQuestion}></AddQuestionForm>
     </div>
   );
 }
