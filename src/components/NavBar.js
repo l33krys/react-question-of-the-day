@@ -6,7 +6,8 @@ const NavBar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className=".app-bar">
         <Toolbar className=".tool-bar">
-          <h1>Logo</h1>
+          <h1>Question Query ❓</h1>
+          <p>Your daily source for your question of the day.</p>
           <NavLink
             to="/"
             exact
