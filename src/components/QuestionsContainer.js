@@ -6,16 +6,10 @@ import AddQuestionForm from "./AddQuestionForm";
 import { Button } from "@mui/material";
 
 function QuestionsContainer({ questions, setQuestions }) {
-  //const [questions, setQuestions] = useState([]);
+
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showNewAndUsed, setShowNewAndUsed] = useState(false);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/questions")
-  //     .then((r) => r.json())
-  //     .then((data) => setQuestions(data));
-  // }, []);
 
   const searchedQuestions = questions
     .filter((question) =>
@@ -36,6 +30,7 @@ function QuestionsContainer({ questions, setQuestions }) {
 
   function deletedQuestion(deletedItem) {
     fetch(`http://localhost:3000/questions/${deletedItem.id}`, {
+
       method: "DELETE"})
     .then(r => r.json())
     .then(() => {
@@ -43,18 +38,15 @@ function QuestionsContainer({ questions, setQuestions }) {
       question.id !== deletedItem.id
       )
       setQuestions(updatedQuestions)
-    })
-}
+      });
+  }
 
   function updateQuestionInfo(updatedItem) {
     const updatedQuestions = questions.map((question) =>
-      question.id === updatedItem.id ? updatedItem : question)
-    setQuestions(updatedQuestions)  
+      question.id === updatedItem.id ? updatedItem : question
+    );
+    setQuestions(updatedQuestions);
   }
-
-  const handleNewQuestion = (newQuestion) => {
-    setQuestions([...questions, newQuestion]);
-  };
 
   return (
     <div>
@@ -66,7 +58,6 @@ function QuestionsContainer({ questions, setQuestions }) {
       />
       <QuestionsList questions={searchedQuestions} deletedQuestion={deletedQuestion} updateQuestionInfo={updateQuestionInfo} /> 
       <AddQuestionForm handleNewQuestion={handleNewQuestion} />
-
     </div>
   );
 }

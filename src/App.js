@@ -17,6 +17,10 @@ function App() {
       .then((r) => r.json())
       .then((data) => setQuestions(data));
   }, []);
+  
+  const handleNewQuestion = (newQuestion) => {
+    setQuestions([...questions, newQuestion]);
+  };
 
   return (
     <Router>
@@ -26,7 +30,7 @@ function App() {
           <Home questions={questions} setQuestions={setQuestions} />
         </Route>
         <Route path="/add-question">
-          <AddQuestion />
+          <AddQuestion handleNewQuestion={handleNewQuestion} />
         </Route>
         <Route path="/dashboard">
           <Dashboard />

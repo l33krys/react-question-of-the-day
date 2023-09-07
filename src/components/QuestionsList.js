@@ -29,8 +29,13 @@ function QuestionsList({ questions, deletedQuestion, updateQuestionInfo }) {
             </th>
           </tr>
           {questions.map((question) => (
-        <QuestionCard key={question.id} question={question} deletedQuestion={deletedQuestion} updateQuestionInfo={updateQuestionInfo} />
-      ))}
+            <QuestionCard
+              key={question.id}
+              question={question}
+              deletedQuestion={deletedQuestion}
+              updateQuestionInfo={updateQuestionInfo}
+            />
+          ))}
         </tbody>
       </table>
     </div>
