@@ -1,39 +1,56 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import {
+  Typography,
+  Button,
+  Grid,
+  FormControl,
+  InputLabel,
+  Box,
+} from "@mui/material";
 
-const MyTextInput = ({ label, ...props }) => {
+const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
+    <FormControl fullWidth>
+      <InputLabel htmlFor={props.id || props.name}>{label}</InputLabel>
+      <textarea className="text-input" {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div
+          className={`error ${
+            meta.error === "Required" ? "required-error" : ""
+          }`}
+        >
+          {meta.error}
+        </div>
       ) : null}
-    </>
+    </FormControl>
   );
 };
 
 const MySelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...field} {...props} />
+    <FormControl fullWidth>
+      <InputLabel htmlFor={props.id || props.name}>{label}</InputLabel>
+      <select {...field} {...props}>
+        {props.children}
+      </select>
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div
+          className={`error ${
+            meta.error === "Required" ? "required-error" : ""
+          }`}
+        >
+          {meta.error}
+        </div>
       ) : null}
-    </div>
+    </FormControl>
   );
 };
 
-const AddQuestionForm = () => {
-  const [addedQuestion, setAddedQuestion] = useState(null);
-
+const AddQuestionForm = ({ handleNewQuestion }) => {
   const handleSubmit = (values) => {
     const newQuestion = {
       text: values.newQuestion,
@@ -47,69 +64,76 @@ const AddQuestionForm = () => {
     })
       .then((r) => r.json())
       .then((questions) => {
-        setAddedQuestion(newQuestion);
+        handleNewQuestion(questions);
       });
   };
 
   return (
-    <>
-      <Typography variant="h5">Subscribe!</Typography>
-      <Formik
-        initialValues={{
-          newQuestion: "",
-          category: "",
-        }}
-        validationSchema={Yup.object({
-          newQuestion: Yup.string()
-            .max(150, "Must be 150 characters or less")
-            .required("Required"),
-          category: Yup.string()
-            .oneOf(
-              ["recreation", "family & friends", "work", "miscellaneous"],
-              "Invalid Job Type"
-            )
-            .required("Required"),
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          handleSubmit(values);
-          setSubmitting(false);
-        }}
-      >
-        <Form>
-          <MyTextInput
-            label="New Question"
-            name="newQuestion"
-            type="text"
-            placeholder="Type your question here..."
-          />
-
-          <MySelect label="Category" name="category">
-            <option value="">Select a Category</option>
-            <option value="recreation">Recreation</option>
-            <option value="family & friends">Family & Friends</option>
-            <option value="work">Work</option>
-            <option value="miscellaneous">Miscellaneous</option>
-          </MySelect>
-
-          <Button type="submit" color="secondary" variant="outlined">
-            Submit
-          </Button>
-        </Form>
-      </Formik>
-
-      {/* Display submitted question */}
-      {addedQuestion && (
-        <div>
-          <Typography variant="h6">Submitted Question:</Typography>
-          <p>
-            <strong>Question:</strong> {addedQuestion.text}
-          </p>
-          <p>
-            <strong>Category:</strong> {addedQuestion.category}
-          </p>
-        </div>
-      )}
-    </>
+    <Grid container justifyContent="center" className="AddQuestionForm">
+      <Grid item xs={12} sm={8} md={6}>
+        <Box p={3}>
+          <Typography variant="h4" align="center">
+            Add new Question
+          </Typography>
+          <Formik
+            initialValues={{
+              newQuestion: "",
+              category: "",
+            }}
+            validationSchema={Yup.object({
+              newQuestion: Yup.string()
+                .max(150, "Must be 150 characters or less")
+                .required("Required"),
+              category: Yup.string()
+                .oneOf(
+                  ["recreation", "family & friends", "work", "miscellaneous"],
+                  "Invalid Job Type"
+                )
+                .required("Required"),
+            })}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              handleSubmit(values);
+              setSubmitting(false);
+              resetForm();
+            }}
+          >
+            <Form>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="filled"
+                    name="newQuestion"
+                    type="text"
+                    placeholder="Type your question here..."
+                    className="question-input"
+                    style={{ marginTop: "10px" }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <MySelect name="category" className="category-input">
+                    <option value="select-category">Select a Category</option>
+                    <option value="recreation">Recreation</option>
+                    <option value="family & friends">Family & Friends</option>
+                    <option value="work">Work</option>
+                    <option value="miscellaneous">Miscellaneous</option>
+                  </MySelect>
+                </Grid>
+              </Grid>
+              <Button
+                className="button"
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                style={{ marginTop: "20px" }}
+              >
+                Submit
+              </Button>
+            </Form>
+          </Formik>
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 
