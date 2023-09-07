@@ -5,8 +5,7 @@ import Search from "./Search";
 import AddQuestionForm from "./AddQuestionForm";
 import { Button } from "@mui/material";
 
-function QuestionsContainer() {
-  const [questions, setQuestions] = useState([]);
+function QuestionsContainer({ questions, setQuestions, handleNewQuestion }) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showNewAndUsed, setShowNewAndUsed] = useState(false);
@@ -85,10 +84,6 @@ function QuestionsContainer() {
       }
     }
   }
-
-  const handleNewQuestion = (newQuestion) => {
-    setQuestions([...questions, newQuestion]);
-  };
 
   return (
     <div>

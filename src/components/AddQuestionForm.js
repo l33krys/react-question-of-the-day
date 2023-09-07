@@ -56,7 +56,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       text: values.newQuestion,
       category: values.category,
       completed: false,
-      likes: 0
+      likes: 0,
     };
 
     fetch("http://localhost:3000/questions", {
@@ -74,7 +74,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
     <Grid container justifyContent="center" className="AddQuestionForm">
       <Grid item xs={12} sm={8} md={6}>
         <Box p={3}>
-          <Typography variant="h4" align="center">
+          <Typography variant="h2" align="center">
             Add new Question
           </Typography>
           <Formik
