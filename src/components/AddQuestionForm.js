@@ -73,7 +73,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       <Grid item xs={12} sm={8} md={6}>
         <Box p={3}>
           <Typography variant="h4" align="center">
-            Add a new Question
+            Add new Question
           </Typography>
           <Formik
             initialValues={{
@@ -120,7 +120,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                 </Grid>
               </Grid>
               <Button
-                className="new-question-button"
+                className="button"
                 type="submit"
                 variant="contained"
                 color="primary"

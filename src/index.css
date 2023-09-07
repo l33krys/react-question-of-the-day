@@ -47,3 +47,21 @@ code {
   font-size: 12px;
   color: red;
 }
+
+.random-question {
+  font-size: 45px;
+  color: #1976d2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: auto;
+  height: auto;
+}
+
+.shaped-background {
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1px #1976d2;
+}

@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import QuestionsList from "./QuestionsList";
 import Search from "./Search";
 import AddQuestionForm from "./AddQuestionForm";
+import { Button } from "@mui/material";
 
 function QuestionsContainer() {
   const [questions, setQuestions] = useState([]);
@@ -53,7 +54,7 @@ function QuestionsContainer() {
         setSelectedCategory={setSelectedCategory}
         setShowNewAndUsed={setShowNewAndUsed}
       />
-      <h1>{randomQuestion}</h1>
+      <h1 className="random-question shaped-background">{randomQuestion}</h1>
       <label>
         <strong>Only New Questions:</strong>
         <input
@@ -63,7 +64,14 @@ function QuestionsContainer() {
           onClick={(e) => setShowNewAndUsed(e.target.checked)}
         />
       </label>
-      <button onClick={getRandomQuestion}>Next Question</button>
+      <Button
+        onClick={getRandomQuestion}
+        type="submit"
+        variant="contained"
+        color="primary"
+      >
+        Next Question
+      </Button>
       <QuestionsList questions={searchedQuestions} />
       <AddQuestionForm handleNewQuestion={handleNewQuestion} />
     </div>
