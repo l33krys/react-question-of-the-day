@@ -12,7 +12,6 @@ function Randomizer({ questions }) {
 
   return (
     <div id="random-area" className="shaped-background">
-      <h2>Today's Question:</h2>
       <p className="random-question">{randomQuestion}</p>
       <Button
         onClick={getRandomQuestion}

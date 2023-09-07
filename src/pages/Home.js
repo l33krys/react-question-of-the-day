@@ -5,7 +5,6 @@ import Dashboard from "../components/Dashboard";
 function Home({ questions }) {
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
       <Randomizer questions={questions}></Randomizer>
       <h1>Welcome to Question Query❓</h1>
       <p>
