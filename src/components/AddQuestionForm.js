@@ -55,6 +55,8 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
     const newQuestion = {
       text: values.newQuestion,
       category: values.category,
+      completed: false,
+      likes: 0
     };
 
     fetch("http://localhost:3000/questions", {
@@ -86,7 +88,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                 .required("Required"),
               category: Yup.string()
                 .oneOf(
-                  ["recreation", "family & friends", "work", "miscellaneous"],
+                  ["Recreation", "Family & Friends", "Work", "Miscellaneous"],
                   "Invalid Job Type"
                 )
                 .required("Required"),
@@ -111,11 +113,11 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
                 </Grid>
                 <Grid item xs={12}>
                   <MySelect name="category" className="category-input">
-                    <option value="select-category">Select a Category</option>
-                    <option value="recreation">Recreation</option>
-                    <option value="family & friends">Family & Friends</option>
-                    <option value="work">Work</option>
-                    <option value="miscellaneous">Miscellaneous</option>
+                    <option value="">Select a Category</option>
+                    <option value="Recreation">Recreation</option>
+                    <option value="Family & Friends">Family & Friends</option>
+                    <option value="Work">Work</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
                   </MySelect>
                 </Grid>
               </Grid>

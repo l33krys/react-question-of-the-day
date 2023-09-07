@@ -41,6 +41,42 @@ function QuestionsContainer() {
     setRandomQuestion(questions[randomIndex].text);
   }
 
+  function deletedQuestion(deletedItem) {
+
+    fetch(`http://localhost:3000/questions/${deletedItem.id}`, {
+      method: "DELETE"})
+    .then(r => r.json())
+    .then(() => {
+      const updatedQuestions = questions.filter((question) =>
+      question.id !== deletedItem.id
+      )
+
+      setQuestions(updatedQuestions)
+    })
+}
+
+  function updateQuestionInfo(updatedItem) {
+    const updatedQuestions = questions.map((question) =>
+      question.id === updatedItem.id ? updatedItem : question)
+    setQuestions(updatedQuestions)  
+  }
+
+  function markCompleted(e) {
+    if (randomQuestion) {
+      if (e.target.value !== "") {
+        const myBool = e.target.value === "true" ? (e.target.value === "true") : (e.target.value === "false")
+        const markCompletedQuestion = questions.filter((question) => question.text === randomQuestion ? question : null)
+        fetch(`http://localhost:3000/questions/${markCompletedQuestion[0].id}`, {
+          method: "PATCH",
+          headers: {"Content-Type" : "application/json"},
+          body: JSON.stringify({completed: myBool})
+        })
+        .then(r => r.json())
+        .then(updatedItem => updateQuestionInfo(updatedItem))
+      }
+    }
+  }
+
   const handleNewQuestion = (newQuestion) => {
     setQuestions([...questions, newQuestion]);
   };
@@ -56,6 +92,13 @@ function QuestionsContainer() {
       />
       <h1 className="random-question shaped-background">{randomQuestion}</h1>
       <label>
+          <strong>Completed:</strong>
+          <select name="completed" id="set-completed" onChange={markCompleted}>
+              <option value=""></option>
+              <option value="true">Completed</option>
+              <option value="false">Not Completed</option>
+          </select>
+      </label>    
         <strong>Only New Questions:</strong>
         <input
           type="checkbox"
@@ -72,8 +115,9 @@ function QuestionsContainer() {
       >
         Next Question
       </Button>
-      <QuestionsList questions={searchedQuestions} />
+      <QuestionsList questions={searchedQuestions} deletedQuestion={deletedQuestion} updateQuestionInfo={updateQuestionInfo} /> 
       <AddQuestionForm handleNewQuestion={handleNewQuestion} />
+
     </div>
   );
 }

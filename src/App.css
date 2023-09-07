@@ -74,3 +74,24 @@ input#search-bar {
   margin: 20px;
   padding: 20px;
 }
+
+#question-table {
+  text-align: left;
+  line-height: 2em;
+  padding: 5px 20px 5px 20px;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px 25px 5px 25px;
+}
+
+tr:not(:first-child):hover {
+  background-color: rgb(179, 193, 203);
+}
+
+.update-area {
+  border: solid;
+}
