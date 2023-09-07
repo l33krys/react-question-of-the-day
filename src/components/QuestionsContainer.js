@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
 import QuestionsList from "./QuestionsList";
 import Search from "./Search";
 import AddQuestionForm from "./AddQuestionForm";
-import { Button } from "@mui/material";
 
 function QuestionsContainer({ questions, setQuestions, handleNewQuestion }) {
   const [search, setSearch] = useState("");
