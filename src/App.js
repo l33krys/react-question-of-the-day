@@ -9,15 +9,14 @@ import Dashboard from "./pages/Dashboard";
 import Questions from "./pages/Questions";
 
 function App() {
-
   const [questions, setQuestions] = useState([]);
-  
+
   useEffect(() => {
     fetch("http://localhost:3000/questions")
       .then((r) => r.json())
       .then((data) => setQuestions(data));
   }, []);
-  
+
   const handleNewQuestion = (newQuestion) => {
     setQuestions([...questions, newQuestion]);
   };
@@ -36,7 +35,11 @@ function App() {
           <Dashboard />
         </Route>
         <Route path="/questions">
-          <Questions questions={questions} setQuestions={setQuestions} />
+          <Questions
+            questions={questions}
+            setQuestions={setQuestions}
+            handleNewQuestion={handleNewQuestion}
+          />
         </Route>
       </Switch>
       <Footer />

@@ -5,8 +5,7 @@ import Search from "./Search";
 import AddQuestionForm from "./AddQuestionForm";
 import { Button } from "@mui/material";
 
-function QuestionsContainer({ questions, setQuestions }) {
-
+function QuestionsContainer({ questions, setQuestions, handleNewQuestion }) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showNewAndUsed, setShowNewAndUsed] = useState(false);
@@ -30,14 +29,14 @@ function QuestionsContainer({ questions, setQuestions }) {
 
   function deletedQuestion(deletedItem) {
     fetch(`http://localhost:3000/questions/${deletedItem.id}`, {
-
-      method: "DELETE"})
-    .then(r => r.json())
-    .then(() => {
-      const updatedQuestions = questions.filter((question) =>
-      question.id !== deletedItem.id
-      )
-      setQuestions(updatedQuestions)
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        const updatedQuestions = questions.filter(
+          (question) => question.id !== deletedItem.id
+        );
+        setQuestions(updatedQuestions);
       });
   }
 
@@ -56,7 +55,11 @@ function QuestionsContainer({ questions, setQuestions }) {
         setSelectedCategory={setSelectedCategory}
         setShowNewAndUsed={setShowNewAndUsed}
       />
-      <QuestionsList questions={searchedQuestions} deletedQuestion={deletedQuestion} updateQuestionInfo={updateQuestionInfo} /> 
+      <QuestionsList
+        questions={searchedQuestions}
+        deletedQuestion={deletedQuestion}
+        updateQuestionInfo={updateQuestionInfo}
+      />
       <AddQuestionForm handleNewQuestion={handleNewQuestion} />
     </div>
   );
