@@ -256,3 +256,19 @@ code {
   margin-left: 28px;
 }
 
+.navbar-link {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .navbar-link {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+.intro-text {
+  margin-left: 24px;
+  margin-top: 0px;
+}
