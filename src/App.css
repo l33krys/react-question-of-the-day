@@ -93,6 +93,7 @@ td:nth-child(1) {
   width: 450px;
 }
 
+th:not(:first-child),
 td:not(:first-child) {
   text-align: center;
 }
@@ -118,6 +119,10 @@ tr:not(:first-child):hover {
 caption {
   text-align: left;
   padding-left: 20px;
+}
+
+#total-questions {
+  font-size: 12px;
 }
 
 body {
@@ -250,3 +255,4 @@ code {
   padding: 10px 10px 10px 10px;
   margin-left: 28px;
 }
+

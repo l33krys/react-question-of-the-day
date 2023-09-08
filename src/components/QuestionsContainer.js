@@ -55,6 +55,7 @@ function QuestionsContainer({ questions, setQuestions, handleNewQuestion }) {
       />
       <QuestionsList
         questions={searchedQuestions}
+        setQuestions={setQuestions}
         deletedQuestion={deletedQuestion}
         updateQuestionInfo={updateQuestionInfo}
       />
