@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import {
@@ -51,6 +51,8 @@ const MySelect = ({ label, ...props }) => {
 };
 
 const AddQuestionForm = ({ handleNewQuestion }) => {
+  const [isQuestionSubmitted, setIsQuestionSubmitted] = useState(false);
+
   const handleSubmit = (values) => {
     const newQuestion = {
       text: values.newQuestion,
@@ -67,8 +69,19 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       .then((r) => r.json())
       .then((questions) => {
         handleNewQuestion(questions);
+        // alert("Question submitted.");
+        setIsQuestionSubmitted(true);
       });
   };
+
+  useEffect(() => {
+    if (isQuestionSubmitted) {
+      const timer = setTimeout(() => {
+        setIsQuestionSubmitted(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isQuestionSubmitted]);
 
   return (
     <Grid container justifyContent="center" className="AddQuestionForm">
@@ -133,6 +146,11 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
               </Button>
             </Form>
           </Formik>
+          {isQuestionSubmitted && (
+            <div className="question-submitted-message">
+              Question submitted successfully!
+            </div>
+          )}
         </Box>
       </Grid>
     </Grid>
