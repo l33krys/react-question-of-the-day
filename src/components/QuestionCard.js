@@ -4,6 +4,8 @@ function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
   const EMPTY_HEART = "♡";
   const FULL_HEART = "♥";
 
+  // ⬆️ ⬇️
+
   function handleLikes(e) {
     fetch(`http://localhost:3000/questions/${question.id}`, {
       method: "PATCH",

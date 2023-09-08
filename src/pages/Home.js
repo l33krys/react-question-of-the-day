@@ -5,16 +5,15 @@ import Dashboard from "../components/Dashboard";
 function Home({ questions }) {
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
       <Randomizer questions={questions}></Randomizer>
-      <h1>Welcome to Question Query ❓</h1>
+      <h1>Welcome to Question Query❓</h1>
       <p>
         Dive into a world of curiosity, fun, and learning with Question Query -
         your daily dose of intriguing questions to spark joy and ignite
         conversations. Whether you're looking to kickstart your day with a dose
         of wit or wind down with a quirky query, we have something for everyone.
       </p>
-      <p>
+      <div>
         <p> Why Question Query❓ </p>
         <ul>
           <li>
@@ -34,7 +33,7 @@ function Home({ questions }) {
             personalized dashboard.
           </li>
         </ul>
-      </p>
+      </div>
       <p>
         Join us in fostering a community of curiosity and discovery, one
         question at a time.
