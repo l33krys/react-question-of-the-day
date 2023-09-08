@@ -69,7 +69,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       .then((r) => r.json())
       .then((questions) => {
         handleNewQuestion(questions);
-        alert("Question submitted.");
+        // alert("Question submitted.");
         setIsQuestionSubmitted(true);
       });
   };
@@ -78,7 +78,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
     if (isQuestionSubmitted) {
       const timer = setTimeout(() => {
         setIsQuestionSubmitted(false);
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [isQuestionSubmitted]);
@@ -87,11 +87,6 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
     <Grid container justifyContent="center" className="AddQuestionForm">
       <Grid item xs={12} sm={8} md={6}>
         <Box p={3}>
-          {isQuestionSubmitted && ( // Conditionally render the message
-            <div className="question-submitted-message">
-              Question submitted successfully!
-            </div>
-          )}
           <Typography variant="h2" align="center">
             Add new Question
           </Typography>
@@ -151,6 +146,11 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
               </Button>
             </Form>
           </Formik>
+          {isQuestionSubmitted && (
+            <div className="question-submitted-message">
+              Question submitted successfully!
+            </div>
+          )}
         </Box>
       </Grid>
     </Grid>
