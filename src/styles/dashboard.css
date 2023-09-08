@@ -1,0 +1,35 @@
+.dashboard-container {
+    padding: 24px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px #1976d2;
+}
+
+.dashboard-header {
+    font-size: 24px;
+    color: #1976d2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.shaped-background {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px #1976d2;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 18px;
+    color: #1976d2;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.section-text {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+}
