@@ -1,17 +1,20 @@
 import React from "react";
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Button from '@mui/material/Button';
 
 function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
-  const EMPTY_HEART = "♡";
-  const FULL_HEART = "♥";
-
   // ⬆️ ⬇️
 
-  function handleLikes(e) {
+  function handleLikes(update) {
+    update === "like" ? question.likes += 1 : question.likes -= 1 
     fetch(`http://localhost:3000/questions/${question.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ likes: (question.likes += 1) }),
-    })
+      body: JSON.stringify({ likes: (question.likes) }),
+      })
       .then((r) => r.json())
       .then((updatedItem) => updateQuestionInfo(updatedItem));
   }
@@ -36,18 +39,18 @@ function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
       <td>{question.category}</td>
       <td>
         {question.completed ? (
-          <button onClick={handleCompleted}>Yes</button>
+          <Button sx={{ color: 'black', borderColor: 'black' }} variant="outlined" size="small" onClick={() => handleCompleted(question.completed)}>Yes</Button>
         ) : (
-          <button onClick={handleCompleted}>No</button>
+          <Button sx={{ color: 'black', borderColor: 'black' }} variant="outlined" size="small" onClick={() => handleCompleted(question.completed)}>No</Button>
         )}
       </td>
       <td>
-        <button onClick={handleLikes}>
-          {question.likes} {FULL_HEART}
-        </button>
+        <IconButton value={'increase'} onClick={() => handleLikes("like")} ><ArrowDropUpIcon fontSize="small" /></IconButton>
+        <span>{question.likes}</span>
+        <IconButton value={'decrease'} onClick={() => handleLikes("dislike")}><ArrowDropDownIcon fontSize="small" /></IconButton>
       </td>
       <td>
-        <button onClick={handleDelete}>Delete</button>
+        <IconButton onClick={handleDelete} aria-label="delete"><DeleteIcon /></IconButton>
       </td>
     </tr>
   );
