@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import {
@@ -51,6 +51,8 @@ const MySelect = ({ label, ...props }) => {
 };
 
 const AddQuestionForm = ({ handleNewQuestion }) => {
+  const [isQuestionSubmitted, setIsQuestionSubmitted] = useState(false);
+
   const handleSubmit = (values) => {
     const newQuestion = {
       text: values.newQuestion,
@@ -68,13 +70,28 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       .then((questions) => {
         handleNewQuestion(questions);
         alert("Question submitted.");
+        setIsQuestionSubmitted(true);
       });
   };
+
+  useEffect(() => {
+    if (isQuestionSubmitted) {
+      const timer = setTimeout(() => {
+        setIsQuestionSubmitted(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isQuestionSubmitted]);
 
   return (
     <Grid container justifyContent="center" className="AddQuestionForm">
       <Grid item xs={12} sm={8} md={6}>
         <Box p={3}>
+          {isQuestionSubmitted && ( // Conditionally render the message
+            <div className="question-submitted-message">
+              Question submitted successfully!
+            </div>
+          )}
           <Typography variant="h2" align="center">
             Add new Question
           </Typography>
