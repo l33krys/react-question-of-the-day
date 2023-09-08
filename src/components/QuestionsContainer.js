@@ -26,7 +26,7 @@ function QuestionsContainer({ questions, setQuestions, handleNewQuestion }) {
     });
 
   function deletedQuestion(deletedItem) {
-    fetch(`http://localhost:3000/questions/${deletedItem.id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/questions/${deletedItem.id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())

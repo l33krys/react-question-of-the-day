@@ -10,7 +10,7 @@ function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
 
   function handleLikes(update) {
     update === "like" ? question.likes += 1 : question.likes -= 1 
-    fetch(`http://localhost:3000/questions/${question.id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/questions/${question.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ likes: (question.likes) }),
@@ -24,7 +24,7 @@ function QuestionCard({ question, deletedQuestion, updateQuestionInfo }) {
   }
 
   function handleCompleted(e) {
-    fetch(`http://localhost:3000/questions/${question.id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/questions/${question.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed: !question.completed }),

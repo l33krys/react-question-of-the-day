@@ -8,18 +8,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function QuestionsList({ questions, setQuestions, deletedQuestion, updateQuestionInfo }) {
 
-  // function handleSort(sorting) {
-  //   if (sorting === "az") {
-  //     const sortedQuestions = questions.sort((question1, question2) => 
-  //     question1.text.localeCompare(question2.text))
-  //     setQuestions(sortedQuestions)
-  //   } else if (sorting === "za") {
-  //     const sortedQuestions = questions.sort((question1, question2) => 
-  //     question2.text.localeCompare(question1.text))
-  //     setQuestions(sortedQuestions)
-  //   }
-  // }
-
   function handleSort(sorting, column) {
     if (sorting === "az") {
       const sortedQuestions = questions.sort((question1, question2) => 
