@@ -67,6 +67,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       .then((r) => r.json())
       .then((questions) => {
         handleNewQuestion(questions);
+        alert("Question submitted.");
       });
   };
 
