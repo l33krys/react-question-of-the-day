@@ -6,13 +6,12 @@ const NavBar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className=".app-bar">
         <Toolbar className=".tool-bar">
-          <h1>Question Query ❓</h1>
-          <p>Your daily source for your question of the day.</p>
+          <h1 className="navBar-h1">Question Query ❓</h1>
           <NavLink
             to="/"
             exact
-            className="navbar-link"
-            activeClassName="active-link"
+            className="navbar-link home-link"
+            activeClassName="active-link home-link-active"
           >
             Home
           </NavLink>
@@ -38,6 +37,9 @@ const NavBar = () => {
             Dashboard
           </NavLink>
         </Toolbar>
+        <p className="tagline">
+          Your daily source for your question of the day.
+        </p>
       </AppBar>
     </Box>
   );
