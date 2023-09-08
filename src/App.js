@@ -13,7 +13,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/questions")
+    fetch(`${process.env.REACT_APP_API_URL}/questions`)
       .then((r) => r.json())
       .then((data) => {
         setQuestions(data);

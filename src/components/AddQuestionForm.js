@@ -61,7 +61,7 @@ const AddQuestionForm = ({ handleNewQuestion }) => {
       likes: 0,
     };
 
-    fetch("http://localhost:3000/questions", {
+    fetch(`${process.env.REACT_APP_API_URL}/questions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newQuestion),
