@@ -5,17 +5,25 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import AddQuestion from "./pages/AddQuestion";
-import Dashboard from "./pages/Dashboard";
 import Questions from "./pages/Questions";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/questions")
       .then((r) => r.json())
-      .then((data) => setQuestions(data));
+      .then((data) => {
+        setQuestions(data);
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const handleNewQuestion = (newQuestion) => {
     setQuestions([...questions, newQuestion]);
@@ -32,7 +40,7 @@ function App() {
           <AddQuestion handleNewQuestion={handleNewQuestion} />
         </Route>
         <Route path="/dashboard">
-          <Dashboard />
+          <Dashboard questions={questions} />
         </Route>
         <Route path="/questions">
           <Questions
