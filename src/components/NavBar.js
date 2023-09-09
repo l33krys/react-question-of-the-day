@@ -4,8 +4,8 @@ import { AppBar, Toolbar, Box } from "@mui/material";
 const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className=".app-bar">
-        <Toolbar className=".tool-bar">
+      <AppBar position="static" className="app-bar">
+        <Toolbar className="tool-bar">
           <h1 className="navBar-h1">Question Query ❓</h1>
           <NavLink
             to="/"
